@@ -22,13 +22,7 @@ and
 
 Per wikipedia
 
-<style> .green { color: green;}
-</style>
-
-**B**(t) = (1-t)<sup>3</sup>**P**<sub>0</sub>
-+ 3(1-t)<sup>2</sup>t**P**<sub>1</sub>
-+ 3(1-t)t<sup>2</sup>**P**<sub>2</sub>
-+ t<sup>3</sup>**P**<sub>3</sub>, 0&le;t&le;1
+**B**(t) = (1-t)<sup>3</sup>**P**<sub>0</sub> + 3(1-t)<sup>2</sup>t**P**<sub>1</sub> + 3(1-t)t<sup>2</sup>**P**<sub>2</sub> + t<sup>3</sup>**P**<sub>3</sub>, 0&le;t&le;1
 
 <pre style="font-size:80%; background: white; color: #00C; padding: 0.4em;">
 <b>typedef</b> <b>struct</b> _point_S {
