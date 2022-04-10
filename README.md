@@ -46,7 +46,7 @@ point bezier(point P[4], <b class="green">float</b> frac) {
 
 ## Internal Encoding
 
-[Unicode](https://www.unicode.org/charts/) doesn't do well with ligatures and variation usage, among other problems. The internal encoding is therefore something else. **ᛘᛦ** can therefore store text in its internal coding and in UTF-8 using variation selectors (U+E0100&mdash;U+E01EF).
+[Unicode](https://www.unicode.org/charts/) doesn't do well with ligatures and variation usage, among other problems. The internal encoding is therefore something else. **Kråkfot** can therefore store text in its internal coding and in UTF-8 using variation selectors (U+E0100&mdash;U+E01EF).
 
 Problems with Unicode:
 
