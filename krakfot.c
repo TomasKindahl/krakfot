@@ -28,7 +28,7 @@ int fullScreen = 0;
 /* https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths  */
 /* https://personal.math.ubc.ca/~cass/graphics/text/www/pdf/ch6.pdf */
 
-/*  here7  svg path    PostScript  */
+/*  here   svg path    PostScript  */
 /*---------------------------------*/
 /*  MV     M           moveto      */
 /*  LT     L           lineto      */
@@ -60,18 +60,18 @@ typedef struct _oparg_S {
 } oparg;
 
 
-oparg spaceGlyph[] = {
+oparg glyphSpace[] = {
     ADJ(6.0)
 };
 
-oparg Aglyph[] = {
+oparg glyphA[] = {
     MV(0, 0), STK(2, 0),
     MV(6, 0), STK(8, 0),
     MV(1, 0), LT(4, 10.2), STK(7, 0),
     MV(2, 3.5), STK(6, 3.5), ADJ(8.0)
 };
 
-oparg Bglyph[] = {
+oparg glyphB[] = {
     MV(2, 0), STK(2, 10),
     MV(2, 0), STK(2, 10),
     MV(1, 10), LT(3.5, 10), C1(7.5, 10), C2(7.5, 5), CT(3.5, 5), STK(2, 5),
@@ -79,21 +79,21 @@ oparg Bglyph[] = {
     ADJ(8.0)
 };
 
-oparg Cglyph[] = {
+oparg glyphC[] = {
 	MV(6.5, 10.2), LT(6.5, 8.2), C1(6.5, 9.2), C2(5.5, 10.2), CT(4.5, 10.2), 
 	MV(4, 10.2), C1(0.2, 10.2), C2(0.3, -0.2), CT(4, -0.2), LT(4.5, -0.2),
 	C1(5.5, -0.2), C2(6.5, 0.8), CT(6.5, 2), STK(6.5, 2),
     ADJ(8.0)
 };
 
-oparg Dglyph[] = {
+oparg glyphD[] = {
     MV(1, 0), LT(3, 0), C1(8, 0),
     C2(8, 10), CT(3, 10), LT(3, 10), STK(1, 10),
     MV(2, 0), STK(2, 10),
     ADJ(8.0),
 };
 
-oparg Eglyph[] = {
+oparg glyphE[] = {
     MV(1, 0), MV(6.5, 0), STK(6.5, 1),
     MV(1, 10), MV(6.5, 10), STK(6.5, 9),
     MV(2, 0), STK(2, 10),
@@ -102,7 +102,7 @@ oparg Eglyph[] = {
     ADJ(8.0)
 };
 
-oparg Fglyph[] = {
+oparg glyphF[] = {
     MV(1, 0), STK(4, 0),
     MV(1, 10), MV(6.5, 10), STK(6.5, 9),
     MV(2, 0), STK(2, 10),
@@ -111,7 +111,7 @@ oparg Fglyph[] = {
     ADJ(8.0)
 };
 
-oparg Gglyph[] = {
+oparg glyphG[] = {
 	MV(6.5, 10.2), LT(6.5, 8.2), C1(6.5, 9.2), C2(5.5, 10.2), CT(4.5, 10.2), 
 	MV(4, 10.2), C1(0.2, 10.2), C2(0.3, -0.2), CT(4, -0.2), LT(4.5, -0.2),
 	C1(5.5, -0.2), C2(6.5, 0.8), CT(6.5, 2), STK(6.5, 2),
@@ -119,27 +119,27 @@ oparg Gglyph[] = {
     ADJ(8.0)
 };
 
-oparg Hglyph[] = {
+oparg glyphH[] = {
     MV(0.5, 0), STK(2.5, 0), MV(0.5, 10), STK(2.5, 10),
     MV(1.5, 0), STK(1.5, 10), MV(5.5, 0), STK(7.5, 0),
     MV(5.5, 10), STK(7.5, 10), MV(6.5, 0), STK(6.5, 10),
     MV(1.5, 5), STK(6.5, 5), ADJ(8)
 };
 
-oparg Iglyph[] = {
+oparg glyphI[] = {
     MV(2, 0), STK(4, 0),
     MV(2, 10), STK(4, 10),
     MV(3, 0), STK(3, 10), ADJ(6)
 };
 
-oparg Jglyph[] = {
+oparg glyphJ[] = {
 	MV(4.5, 10), STK(7.5, 10),
 	MV(1, 2.5), C1(1, -1.3), C2(6.5, -1.3), 
 	CT(6.5, 2.5), STK(6.5, 10),
 	ADJ(8.0)
 };
 
-oparg Kglyph[] = {
+oparg glyphK[] = {
     MV(1, 0), STK(4, 0),
     MV(2, 0), STK(2, 10),
     MV(7.5, 10), C1(7, 10), C2(6, 9), CT(6, 8),
@@ -148,14 +148,14 @@ oparg Kglyph[] = {
     ADJ(8.0)
 };
 
-oparg Lglyph[] = {
+oparg glyphL[] = {
     MV(1, 0), MV(6.5, 0), STK(6.5, 1),
     MV(1, 10), STK(4, 10),
     MV(2, 0), STK(2, 10),
     ADJ(8.0)
 };
 
-oparg Mglyph[] = {
+oparg glyphM[] = {
     MV(0.5, 0), STK(2.5, 0), 
     MV(1.5, 0), STK(1.5, 10), MV(7.5, 0), STK(9.5, 0),
     MV(8.5, 0), STK(8.5, 10),
@@ -163,7 +163,7 @@ oparg Mglyph[] = {
     ADJ(10)
 };
 
-oparg Nglyph[] = {
+oparg glyphN[] = {
     MV(0.5, 0), STK(2.5, 0), 
     MV(5.5, 10), STK(7.5, 10),
     MV(1.5, 0), STK(1.5, 10),
@@ -172,13 +172,13 @@ oparg Nglyph[] = {
     ADJ(8)
 };
 
-oparg Oglyph[] = {
+oparg glyphO[] = {
 	MV(5, 10.2), C1(0.5, 10.2), C2(0.5, -0.2), CT(5, -0.2), 
 	MV(5, -0.2), C1(9.5, -0.2), C2(9.5, 10.2), CT(5, 10.2), STK(5, 10.2),
 	ADJ(10.0)
 };
 
-oparg Pglyph[] = {
+oparg glyphP[] = {
     MV(1, 0), STK(4, 0),
     MV(2, 0), STK(2, 10),
     MV(1, 10), LT(3.5, 10), C1(7.5, 10), C2(7.5, 5), CT(3.5, 5), 
@@ -186,7 +186,7 @@ oparg Pglyph[] = {
     ADJ(8.0)
 };
 
-oparg Qglyph[] = {
+oparg glyphQ[] = {
 	MV(5, 10.2), C1(0.5, 10.2), C2(0.5, -0.2), CT(5, -0.2), 
 	MV(5, -0.2), C1(9.5, -0.2), C2(9.5, 10.2), CT(5, 10.2), STK(5, 10.2),
     MV(5, -0.2), C1(3, -0.2), C2(3, 3), CT(5, 3), 
@@ -195,7 +195,7 @@ oparg Qglyph[] = {
 	ADJ(10.0)
 };
 
-oparg Rglyph[] = {
+oparg glyphR[] = {
     MV(1, 0), STK(4, 0),
     MV(2, 0), STK(2, 10),
     MV(1, 10), LT(3.5, 10), C1(7.5, 10), C2(7.5, 5), CT(3.5, 5), STK(2, 5),
@@ -203,7 +203,7 @@ oparg Rglyph[] = {
     ADJ(8.0)
 };
 
-oparg Sglyph[] = {
+oparg glyphS[] = {
 	MV(6.5, 10), LT(6.5, 8), C1(6.5, 9), C2(5.5, 10.2), CT(4.5, 10.2),
 	MV(4, 10.2), C1(0.3, 10.2), C2(0.3, 5), CT(4, 5), LT(4.5, 5), 
 	C1(8, 5), C2(8, -0.3), CT(4.5, -0.3), LT(4, -0.3),
@@ -211,13 +211,13 @@ oparg Sglyph[] = {
     ADJ(8.0)
 };
 
-oparg Tglyph[] = {
+oparg glyphT[] = {
 	MV(1, 9), LT(1, 10), LT(7, 10), STK(7, 9),
 	MV(4, 0), STK(4, 10), MV(2, 0), STK(6, 0),
 	ADJ(8.0)
 };
 
-oparg Uglyph[] = {
+oparg glyphU[] = {
 	MV(0.5, 10), STK(2.5, 10),
 	MV(5.5, 10), STK(7.5, 10),
 	MV(1.5, 10), LT(1.5, 2.5), C1(1.5, -1.3), C2(6.5, -1.3), 
@@ -225,28 +225,28 @@ oparg Uglyph[] = {
 	ADJ(8.0)
 };
 
-oparg Vglyph[] = {
+oparg glyphV[] = {
 	MV(0.5, 10), STK(2.5, 10),
 	MV(5.5, 10), STK(7.5, 10),
 	MV(1.5, 10), LT(4, -0.3), STK(6.5, 10),
 	ADJ(8.0)
 };
 
-oparg Wglyph[] = {
+oparg glyphW[] = {
 	MV(0.5, 10), STK(2.5, 10),
 	MV(7.5, 10), STK(9.5, 10),
 	MV(1.5, 10), LT(3, -0.2), LT(5, 6), LT(7, -0.2), STK(8.5, 10),
 	ADJ(10.0)
 };
 
-oparg Xglyph[] = {
+oparg glyphX[] = {
     MV(0.5, 0), STK(2.5, 0), MV(0.5, 10), STK(2.5, 10),
     MV(5.5, 0), STK(7.5, 0),  MV(5.5, 10), STK(7.5, 10), 
     MV(6.5, 0), STK(1.5, 10), MV(1.5, 0), STK(6.5, 10),    
     ADJ(8)
 };
 
-oparg Yglyph[] = {
+oparg glyphY[] = {
 	MV(0.5, 10), STK(2.5, 10),
 	MV(5.5, 10), STK(7.5, 10),
 	MV(1.5, 10), LT(4, 5), STK(6.5, 10),
@@ -255,7 +255,7 @@ oparg Yglyph[] = {
 	ADJ(8.0)
 };
 
-oparg Zglyph[] = {
+oparg glyphZ[] = {
 	MV(1.5, 9), LT(1.5, 10), LT(6.5, 10),
 	LT(1.5, 0), LT(6.5, 0), STK(6.5, 1),
 	ADJ(8.0)
@@ -326,44 +326,48 @@ void mklist(GLuint L, int ch, oparg *glyph) {
     glNewList(L+ch, GL_COMPILE); drawGlyph(glyph); glEndList();
 }
 
-static void init(void) {
+static void initGlyphs(void) {
     GLuint L;
 
+    L = glGenLists(65536);
+    glListBase(L);
+    mklist(L, 'A', glyphA);
+    mklist(L, 'B', glyphB);
+    mklist(L, 'C', glyphC);
+    mklist(L, 'D', glyphD);
+    mklist(L, 'E', glyphE);
+    mklist(L, 'F', glyphF);
+    mklist(L, 'G', glyphG);
+    mklist(L, 'H', glyphH);
+    mklist(L, 'I', glyphI);
+    mklist(L, 'J', glyphJ);
+    mklist(L, 'K', glyphK);
+    mklist(L, 'L', glyphL);
+    mklist(L, 'M', glyphM);
+    mklist(L, 'N', glyphN);
+    mklist(L, 'O', glyphO);
+    mklist(L, 'P', glyphP);
+    mklist(L, 'Q', glyphQ);
+    mklist(L, 'R', glyphR);
+    mklist(L, 'S', glyphS);
+    mklist(L, 'T', glyphT);
+    mklist(L, 'U', glyphU);
+    mklist(L, 'V', glyphV);
+    mklist(L, 'W', glyphW);
+    mklist(L, 'X', glyphX);
+    mklist(L, 'Y', glyphY);
+    mklist(L, 'Z', glyphZ);
+    mklist(L, ' ', glyphSpace);
+}
+
+static void init(void) {
     glEnable(GL_LINE_SMOOTH);
     glEnable(GL_BLEND);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
     glHint(GL_LINE_SMOOTH_HINT, GL_DONT_CARE);
     glLineWidth(2.0);
-
-    L = glGenLists(65536);
-    glListBase(L);
-    mklist(L, 'A', Aglyph);
-    mklist(L, 'B', Bglyph);
-    mklist(L, 'C', Cglyph);
-    mklist(L, 'D', Dglyph);
-    mklist(L, 'E', Eglyph);
-    mklist(L, 'F', Fglyph);
-    mklist(L, 'G', Gglyph);
-    mklist(L, 'H', Hglyph);
-    mklist(L, 'I', Iglyph);
-    mklist(L, 'J', Jglyph);
-    mklist(L, 'K', Kglyph);
-    mklist(L, 'L', Lglyph);
-    mklist(L, 'M', Mglyph);
-    mklist(L, 'N', Nglyph);
-    mklist(L, 'O', Oglyph);
-    mklist(L, 'P', Pglyph);
-    mklist(L, 'Q', Qglyph);
-    mklist(L, 'R', Rglyph);
-    mklist(L, 'S', Sglyph);
-    mklist(L, 'T', Tglyph);
-    mklist(L, 'U', Uglyph);
-    mklist(L, 'V', Vglyph);
-    mklist(L, 'W', Wglyph);
-    mklist(L, 'X', Xglyph);
-    mklist(L, 'Y', Yglyph);
-    mklist(L, 'Z', Zglyph);
-    mklist(L, ' ', spaceGlyph);
+    
+    initGlyphs();
 }
 
 char *str1 = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
