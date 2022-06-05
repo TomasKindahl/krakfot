@@ -2,4 +2,7 @@ doc
 krakfot
 test_bezier
 *.o
-*.c~
+*~
+notes.md
+test/charscan
+test/test_bezier
