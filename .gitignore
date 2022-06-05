@@ -4,5 +4,6 @@ test_bezier
 *.o
 *~
 notes.md
+dir.md
 test/charscan
 test/test_bezier

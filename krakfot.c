@@ -73,7 +73,6 @@ oparg glyphA[] = {
 
 oparg glyphB[] = {
     MV(2, 0), STK(2, 10),
-    MV(2, 0), STK(2, 10),
     MV(1, 10), LT(3.5, 10), C1(7.5, 10), C2(7.5, 5), CT(3.5, 5), STK(2, 5),
     MV(2, 5), LT(4, 5), C1(8, 5), C2(8, 0), CT(4, 0), STK(1, 0),
     ADJ(8.0)
@@ -316,18 +315,29 @@ static void drawGlyph(oparg *l) {
 }
 
 char glyphs[] = ""
-"{U+40: mv 0 0 stk 2 0 mv 6 0 stk 8 0 "
-"       mv 1 0 lt 4 10.2 stk 7 0 mv 2 3.5 stk 6 3.5 "
-"       adj 8;"
-"}"
-;
+  "{ @41 (0:0 2:0) (6:0 8:0) (1:0 4:10.2 7:0) (2:3.5 6:3.5) >8:0}"
+  ;
 
 void mklist(GLuint L, int ch, oparg *glyph) {
     glNewList(L+ch, GL_COMPILE); drawGlyph(glyph); glEndList();
 }
 
+int tryLoadGlyphs(char *path) {
+	FILE *glyf = fopen(path, "rt");
+	if(!glyf) {
+		fprintf(stderr, "INFO: glyph path %s not loaded\n", path);
+		return 0;
+	}
+	fclose(glyf);
+	return 1;
+}
+
 static void initGlyphs(void) {
     GLuint L;
+
+    tryLoadGlyphs("~/.krakfot/glyphs.gly");
+    tryLoadGlyphs(".krakfot/glyphs.gly");
+    tryLoadGlyphs("glyphs.gly");
 
     L = glGenLists(65536);
     glListBase(L);

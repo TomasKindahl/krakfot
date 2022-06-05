@@ -17,24 +17,16 @@
 ################################################################################
 
 LIBS	= -lGL -lGLU -lglut
-INC		= bezier.o
+INC		= -I..
+OBJ     = ../bezier.o ../scan.o ../parse.o  
 
-krakfot: krakfot.c $(INC)
-	gcc -o $@ $< $(LIBS) $(INC)
+test_bezier: test_bezier.c $(OBJ)
+	gcc -o $@ $< $(INC) $(OBJ)
 
-test_bezier: test_bezier.c $(INC)
-	gcc -o $@ $< $(INC)
+charscan: charscan.c $(OBJ)
+	gcc -o $@ $< $(INC) $(OBJ)
 
-bezier.o: bezier.c bezier.h
-	gcc -c $<
-
-charscan: charscan.c scan.o parse.o
-	gcc -o $@ $< scan.o parse.o
-
-scan.o: scan.c scan.h
-	gcc -c $<
-
-parse.o: parse.c parse.h
-	gcc -c $<
-
-
+../scan.o:
+../parse.o:
+../bezier.o: 
+	@(cd .. ; $(MAKE) $@) 

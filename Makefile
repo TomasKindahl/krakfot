@@ -22,9 +22,17 @@ INC		= bezier.o
 krakfot: krakfot.c $(INC)
 	gcc -o $@ $< $(LIBS) $(INC)
 
-test_bezier: test_bezier.c $(INC)
-	gcc -o $@ $< $(INC)
-
-bezier.o: bezier.c
+bezier.o: bezier.c bezier.h
 	gcc -c $<
 
+scan.o: scan.c scan.h
+	gcc -c $<
+
+parse.o: parse.c parse.h
+	gcc -c $<
+
+test/charscan:
+	cd test ; $(MAKE) $@
+
+test/test_bezier: test_bezier.c $(INC)
+	cd test ; $(MAKE) $@
