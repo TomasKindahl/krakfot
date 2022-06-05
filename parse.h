@@ -40,14 +40,56 @@ typedef struct _glyph_S {
     bpoint adjust;
 } glyph;
 
+/** method get_num_lines                                    **/
+/**   args: G - the glyph to query                          **/
+/**   does: returns the number of paths in the glyph        **/
+int get_num_lines(glyph *G);
+
+/** method get_num_points_on_line                           **/
+/**   args: G    - the glyph to query                       **/
+/**         path - the line number of the path              **/
+/**   does: returns the number of paths in the glyph        **/
+int get_num_points_on_line(glyph *G, int path);
+
+/** method get_x                                            **/
+/**   args: G    - the glyph to query                       **/
+/**         path - the line number of the path              **/
+/**         pnt  - the point number in the path             **/
+/**   does: returns the x coordinate of the point           **/
+float get_x(glyph *G, int path, int pnt);
+
+/** method get_y                                            **/
+/**   args: G    - the glyph to query                       **/
+/**         path - the line number of the path              **/
+/**         pnt  - the point number in the path             **/
+/**   does: returns the y coordinate of the point           **/
+float get_y(glyph *G, int path, int pnt);
+
+/** method is_bez_ctrl                                      **/
+/**   args: G    - the glyph to query                       **/
+/**         path - the line number of the path              **/
+/**         pnt  - the point number in the path             **/
+/**   does: returns whether point is a bezier control point **/
+int is_bez_ctrl(glyph *G, int path, int pnt);
+
+/** method get_adv_y                                        **/
+/**   args: G    - the glyph to query                       **/
+/**   does: returns the x advance of the glyph              **/
+float get_adv_x(glyph *G);
+
+/** method get_adv_y                                        **/
+/**   args: G    - the glyph to query                       **/
+/**   does: returns the y advance of the glyph              **/
+float get_adv_y(glyph *G);
+
 /**********************/
 /**** parser class ****/
 /**********************/
 
 typedef struct _parser_S {
-	glyph **cglyph; /* Glyph list     */
+	glyph **cglyph;   /* Glyph list     */
 	int num_cglyphs;
-    scanner *scan;  /* Scanner status */
+    scanner *scan;    /* Scanner status */
 } parser;
 
 /** method new_parser                                       **/
@@ -73,5 +115,11 @@ int parse_glyphs(parser *P);
 /**   does: prints the glyph list pointed to by the parser  **/
 /**         object                                          **/
 int print_glyphs(parser *P);
+
+/** method getelem                                          **/
+/**   args: P     - pointer to a parser                     **/
+/**         index - index of glyph to get                   **/
+/**   does: get the glyph with the index number             **/
+glyph *getelem(parser *P, int index);
 
 #endif /* _PARSE_H */

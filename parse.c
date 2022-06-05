@@ -86,6 +86,34 @@ glyph *new_glyph() {
 	return res;
 }
 
+int get_num_lines(glyph *G) {
+	return G->contents->ins;
+}
+
+int get_num_points_on_line(glyph *G, int path) {
+	return G->contents->path[path]->ins;
+}
+
+float get_x(glyph *G, int path, int pnt) {
+	return G->contents->path[path]->parr[pnt].x;
+}
+
+float get_y(glyph *G, int path, int pnt) {
+	return G->contents->path[path]->parr[pnt].y;
+}
+
+int is_bez_ctrl(glyph *G, int path, int pnt) {
+	return G->contents->path[path]->parr[pnt].bez_ctrl;
+}
+
+float get_adv_x(glyph *G) {
+	return G->adjust.x;
+}
+
+float get_adv_y(glyph *G) {
+	return G->adjust.y;
+}
+
 /**********************/
 /**** parser class ****/
 /**********************/
@@ -120,6 +148,14 @@ int print_glyphs(parser *P) {
 	for(ix = 0; ix < P->num_cglyphs; ix++) 
 	    print_glyphs_help(P->cglyph[ix]);
 	return 1;
+}
+
+glyph *getelem(parser *P, int index) {
+	if(index < 0 || index >= P->num_cglyphs) {
+		fprintf(stderr, "ERROR: glyphlist index out of bounds %i\n", index);
+		return 0;
+	}
+	return P->cglyph[index];
 }
 
 scanner *get_scanner(parser *P) {

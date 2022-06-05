@@ -316,12 +316,82 @@ static void drawGlyph(oparg *l) {
     }
 }
 
+static void drawGlyph2(glyph *G) {
+	int line, num_lines;
+	int pnt, num_pnts;
+	int ix;
+	float adv_x, adv_y;
+    float P[2];
+    point bez_ctrl[4];
+    int bez_num = 0;
+
+	if(!G) return;
+	num_lines = get_num_lines(G);
+	for(line = 0; line < num_lines; line++) {
+		num_pnts = get_num_points_on_line(G, line);
+		glBegin(GL_LINE_STRIP);
+		for(pnt = 0; pnt < num_pnts; pnt++) {
+			switch(is_bez_ctrl(G, line, pnt)) {
+			  case 0:
+			  	if(bez_num == 0) {
+			  		float x, y;
+			  		x = get_x(G, line, pnt);
+			  		y = get_y(G, line, pnt);
+			  	    bez_ctrl[0].x = x;
+			  	    bez_ctrl[0].y = y;
+			  	    P[0] = x;
+			  	    P[1] = y;
+			  	    glVertex2fv(P);
+			  	}
+			  	else if(bez_num == 2) {
+			  		point Q;
+			  		float x, y;
+			  		bez_num = 0;
+			  		x = get_x(G, line, pnt);
+			  		y = get_y(G, line, pnt);
+			  		
+			  	    bez_ctrl[3].x = x;
+			  	    bez_ctrl[3].y = y;
+			  	    for(ix = 1; ix <= 16; ix++) {
+            	        float frac = ix/16.0;
+            	        Q = bezier(bez_ctrl, frac);
+                        glVertex2fv((const float *)&Q);
+                    }
+			  	    bez_ctrl[0].x = x;
+			  	    bez_ctrl[0].y = y;
+			  	}
+			  	break;
+			  case 1:
+			  	if(bez_num == 0) {
+			  	    bez_num = 1;
+			  	    bez_ctrl[1].x = get_x(G, line, pnt);
+			  	    bez_ctrl[1].y = get_y(G, line, pnt);
+			  	}
+			    else if(bez_num == 1) {
+			  	    bez_num = 2;
+			  	    bez_ctrl[2].x = get_x(G, line, pnt);
+			  	    bez_ctrl[2].y = get_y(G, line, pnt);
+			  	}
+			  	break;
+			}  	
+		}
+		glEnd();
+	}
+	adv_x = get_adv_x(G);
+	adv_y = get_adv_y(G);
+	glTranslatef(adv_x, adv_y, 0.0);
+}
+
 char glyphs[] = ""
   "{ @41 (0:0 2:0) (6:0 8:0) (1:0 4:10.2 7:0) (2:3.5 6:3.5) >8:0}"
   ;
 
 void mklist(GLuint L, int ch, oparg *glyph) {
     glNewList(L+ch, GL_COMPILE); drawGlyph(glyph); glEndList();
+}
+
+void mkglyph(GLuint L, int ch, parser *P) {
+    glNewList(L+ch, GL_COMPILE); drawGlyph2(getelem(P, ch)); glEndList();
 }
 
 int tryLoadGlyphs(parser *P, char *path) {
@@ -339,7 +409,7 @@ int tryLoadGlyphs(parser *P, char *path) {
 
 static void initGlyphs(void) {
     GLuint L;
-    
+    int ix;
     parser *P = new_parser(65536);
     
     tryLoadGlyphs(P, "~/.krakfot/glyphs.gly");
@@ -349,8 +419,12 @@ static void initGlyphs(void) {
 
     L = glGenLists(65536);
     glListBase(L);
+    /*
     mklist(L, 'A', glyphA);
     mklist(L, 'B', glyphB);
+    */
+    for(ix = 'A'; ix <= 'B'; ix++)
+    	mkglyph(L, ix, P);
     mklist(L, 'C', glyphC);
     mklist(L, 'D', glyphD);
     mklist(L, 'E', glyphE);
