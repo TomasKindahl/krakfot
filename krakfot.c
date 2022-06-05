@@ -22,6 +22,8 @@
 #include <stdio.h>
 
 #include "bezier.h"
+#include "scan.h"
+#include "parse.h"
 
 int fullScreen = 0;
 
@@ -322,22 +324,28 @@ void mklist(GLuint L, int ch, oparg *glyph) {
     glNewList(L+ch, GL_COMPILE); drawGlyph(glyph); glEndList();
 }
 
-int tryLoadGlyphs(char *path) {
-	FILE *glyf = fopen(path, "rt");
-	if(!glyf) {
+int tryLoadGlyphs(parser *P, char *path) {
+    scanner *scan = new_scanner(path);
+
+	if(!scan) {
 		fprintf(stderr, "INFO: glyph path %s not loaded\n", path);
 		return 0;
 	}
-	fclose(glyf);
+	
+    set_scanner(P, scan);
+	parse_glyphs(P);
 	return 1;
 }
 
 static void initGlyphs(void) {
     GLuint L;
-
-    tryLoadGlyphs("~/.krakfot/glyphs.gly");
-    tryLoadGlyphs(".krakfot/glyphs.gly");
-    tryLoadGlyphs("glyphs.gly");
+    
+    parser *P = new_parser();
+    
+    tryLoadGlyphs(P, "~/.krakfot/glyphs.gly");
+    tryLoadGlyphs(P, ".krakfot/glyphs.gly");
+    tryLoadGlyphs(P, "glyphs.gly");
+    /* print_glyphs(P); */
 
     L = glGenLists(65536);
     glListBase(L);

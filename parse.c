@@ -13,7 +13,7 @@
 point_flexarr *new_point_flexarr(int max_size) {
 	point_flexarr *res = (point_flexarr *)malloc(sizeof(point_flexarr));
 	res->size = max_size;
-	res->parr = (point *)malloc(sizeof(point)*res->size);
+	res->parr = (bpoint *)malloc(sizeof(bpoint)*res->size);
 	res->ins = 0;
 }
 
@@ -91,11 +91,16 @@ glyph *new_glyph(glyph *prev) {
 /**** parser class ****/
 /**********************/
 
-parser *new_parser(scanner *scan) {
+parser *new_parser() {
 	parser *res = (parser *)malloc(sizeof(parser));
-	res->scan = scan;
+	res->scan = 0;
 	res->cglyph = 0;
 	return res;
+}
+
+parser *set_scanner(parser *P, scanner *scan) {
+	P->scan = scan;
+	return P;
 }
 
 int print_glyphs_help(glyph *G) {

@@ -17,7 +17,7 @@
 ################################################################################
 
 LIBS	= -lGL -lGLU -lglut
-INC		= bezier.o
+INC		= bezier.o parse.o scan.o
 
 krakfot: krakfot.c $(INC)
 	gcc -o $@ $< $(LIBS) $(INC)
@@ -32,7 +32,7 @@ parse.o: parse.c parse.h
 	gcc -c $<
 
 test/charscan:
-	cd test ; $(MAKE) $@
+	cd test ; $(MAKE) charscan
 
-test/test_bezier: test_bezier.c $(INC)
-	cd test ; $(MAKE) $@
+test/test_bezier: bezier.c bezier.h
+	cd test ; $(MAKE) test_bezier

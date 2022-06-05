@@ -5,17 +5,17 @@
 /**** point class ****/
 /*********************/
 
-typedef struct _point_S {
+typedef struct _bpoint_S {
 	int bez_ctrl; /* 0 if a polygon node, 1 if a bezier ctrl point */
 	float x, y;
-} point;
+} bpoint;
 
 /***********************/
 /**** point_flexarr ****/
 /***********************/
 
 typedef struct _point_flexarr_S {
-	point *parr;
+	bpoint *parr;
 	int size;
 	int ins;
 } point_flexarr;
@@ -37,7 +37,7 @@ typedef struct _path_flexarr_S {
 typedef struct _glyph_S {
     int char_code;
     path_flexarr *contents;
-    point adjust;
+    bpoint adjust;
     struct _glyph_S *prev;
 } glyph;
 
@@ -51,11 +51,17 @@ typedef struct _parser_S {
 } parser;
 
 /** method new_parser                                       **/
-/**   args: scan - pointer to a scanner                     **/
-/**   does: returns a newly created parser based on a       **/
-/**         new scanner                                     **/
+/**   args: (none)                                          **/
+/**   does: returns a newly created parser                  **/
 
-parser *new_parser(scanner *scan);
+parser *new_parser();
+
+/** method set_scanner                                      **/
+/**   args: P    - the parser on which to set scanner       **/
+/**         scan - pointer to the scanner                   **/
+/**   does: attaches a scanner to a parser                  **/
+
+parser *set_scanner(parser *P, scanner *scan);
 
 /** method parse_glyphs                                     **/
 /**   args: P - pointer to a parser                         **/
