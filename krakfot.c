@@ -412,10 +412,10 @@ static void initGlyphs(void) {
     int ix;
     parser *P = new_parser(65536);
     
+    tryLoadGlyphs(P, "(internal)"); /* tell scanner to use internal data! */
     tryLoadGlyphs(P, "~/.krakfot/glyphs.gly");
-    tryLoadGlyphs(P, ".krakfot/glyphs.gly");
     tryLoadGlyphs(P, "glyphs.gly");
-    print_glyphs(P);
+    /* print_glyphs(P); */
 
     L = glGenLists(65536);
     glListBase(L);
