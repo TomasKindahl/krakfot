@@ -340,12 +340,12 @@ int tryLoadGlyphs(parser *P, char *path) {
 static void initGlyphs(void) {
     GLuint L;
     
-    parser *P = new_parser();
+    parser *P = new_parser(65536);
     
     tryLoadGlyphs(P, "~/.krakfot/glyphs.gly");
     tryLoadGlyphs(P, ".krakfot/glyphs.gly");
     tryLoadGlyphs(P, "glyphs.gly");
-    /* print_glyphs(P); */
+    print_glyphs(P);
 
     L = glGenLists(65536);
     glListBase(L);

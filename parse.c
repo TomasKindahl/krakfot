@@ -81,9 +81,8 @@ void path_flexarr_print(path_flexarr *PFA) {
 /**** glyph class ****/
 /*********************/
 
-glyph *new_glyph(glyph *prev) {
+glyph *new_glyph() {
 	glyph *res = (glyph *)malloc(sizeof(glyph));
-	res->prev = prev;
 	return res;
 }
 
@@ -91,10 +90,15 @@ glyph *new_glyph(glyph *prev) {
 /**** parser class ****/
 /**********************/
 
-parser *new_parser() {
+parser *new_parser(int size) {
+	int ix;
 	parser *res = (parser *)malloc(sizeof(parser));
 	res->scan = 0;
-	res->cglyph = 0;
+	res->cglyph = (glyph **)malloc(sizeof(glyph *)*size);
+	res->num_cglyphs = size;
+	for(ix = 0; ix < size; ix++) {
+		res->cglyph[ix] = 0;
+	}
 	return res;
 }
 
@@ -109,12 +113,13 @@ int print_glyphs_help(glyph *G) {
 	path_flexarr_print(G->contents);
 	printf("  >%g:%g\n", G->adjust.x, G->adjust.y);
 	printf("}\n");
-	print_glyphs_help(G->prev);
-	return 1;
 }
 
 int print_glyphs(parser *P) {
-	return print_glyphs_help(P->cglyph);
+	int ix;
+	for(ix = 0; ix < P->num_cglyphs; ix++) 
+	    print_glyphs_help(P->cglyph[ix]);
+	return 1;
 }
 
 scanner *get_scanner(parser *P) {
@@ -138,17 +143,18 @@ int parse_glyphs(parser *P) {
 	int status = PST_INIT;
 	float x, y; /* for adding points */
 	int is_comma;
+    glyph *G = 0;
+
 	while(scan(P->scan) != SCAN_EOF) {
 		int type = get_type(P->scan);
-		glyph *G = P->cglyph;
 		switch(status) {
 		    case PST_INIT:
 		    	/* printf("(init)\n"); */
 		    	if(type == SCAN_GCODE) {
+		    		G = new_glyph(P->cglyph);
 		    		status = PST_CHEX;
-		    		P->cglyph = new_glyph(P->cglyph);
-		    		G = P->cglyph;
 		    		G->char_code = get_ival(get_scanner(P));
+		    		P->cglyph[G->char_code] = G;
                 }
 		    	else status = PST_ERR;
 		  	    break;
@@ -214,7 +220,10 @@ int parse_glyphs(parser *P) {
 		  	    break;
 		    case PST_ADJ2:
 		    	/* printf("(adj₂)\n"); */
-		    	if(type == SCAN_RBRACE) status = PST_INIT;
+		    	if(type == SCAN_RBRACE) {
+		    		status = PST_INIT;
+		    		G = 0;
+		    	}
 		    	else status = PST_ERR;
 		  	    break;
 		    case PST_APT1:
@@ -242,4 +251,3 @@ int parse_glyphs(parser *P) {
 	}
 	printf("SUCCESS!\n");
 }
-

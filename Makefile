@@ -18,18 +18,19 @@
 
 LIBS	= -lGL -lGLU -lglut
 INC		= bezier.o parse.o scan.o
+GCC     = gcc -g
 
 krakfot: krakfot.c $(INC)
-	gcc -o $@ $< $(LIBS) $(INC)
+	$(GCC) -o $@ $< $(LIBS) $(INC)
 
 bezier.o: bezier.c bezier.h
-	gcc -c $<
+	$(GCC) -c $<
 
 scan.o: scan.c scan.h
-	gcc -c $<
+	$(GCC) -c $<
 
 parse.o: parse.c parse.h
-	gcc -c $<
+	$(GCC) -c $<
 
 test/charscan:
 	cd test ; $(MAKE) charscan

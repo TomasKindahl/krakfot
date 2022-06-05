@@ -18,13 +18,14 @@
 
 LIBS	= -lGL -lGLU -lglut
 INC		= -I..
-OBJ     = ../bezier.o ../scan.o ../parse.o  
+OBJ     = ../bezier.o ../scan.o ../parse.o
+GCC     = gcc -g
 
 test_bezier: test_bezier.c $(OBJ)
-	gcc -o $@ $< $(INC) $(OBJ)
+	$(GCC) -o $@ $< $(INC) $(OBJ)
 
 charscan: charscan.c $(OBJ)
-	gcc -o $@ $< $(INC) $(OBJ)
+	$(GCC) -o $@ $< $(INC) $(OBJ)
 
 ../scan.o:
 ../parse.o:
