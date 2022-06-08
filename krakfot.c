@@ -411,8 +411,9 @@ static void initGlyphs(void) {
     GLuint L;
     int ix;
     parser *P = new_parser(65536);
-    
-    tryLoadGlyphs(P, "(internal)"); /* tell scanner to use internal data! */
+    const int USE_INTERNAL_DATA = 0;
+
+    tryLoadGlyphs(P, USE_INTERNAL_DATA); /* tell scanner to use internal data! */
     tryLoadGlyphs(P, "~/.krakfot/glyphs.gly");
     tryLoadGlyphs(P, "glyphs.gly");
     /* print_glyphs(P); */

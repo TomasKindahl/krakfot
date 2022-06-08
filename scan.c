@@ -7,6 +7,11 @@
 scanner *new_scanner(char *filename) {
 	scanner *res = 0;
 	FILE *inf;
+    const int USE_INTERNAL_DATA = 0;
+	/* NYI: here test whether filename == USE_INTERNAL_DATA
+	 * and then instead
+	 *     inf = fmemopen(buffer, strlen(buffer), "rt");
+	 */
 	inf = fopen(filename, "rt");
 	if(inf != 0) {
 	    res = (scanner *)malloc(sizeof(scanner));
