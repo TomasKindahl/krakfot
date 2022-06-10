@@ -4,15 +4,39 @@
 
 #include "scan.h"
 
+char internal_glyph_data [] =
+"@41 = {"
+"  (0:0 2:0)"
+"  (6:0 8:0)"
+"  (1:0 4:10.2 7:0)"
+"  (2:3.5 6:3.5)"
+"  >8:0"
+"}"
+"@42 = {"
+"  (2:0 2:10)"
+"  (1:10 3.5:10 7.5,10 7.5,5 3.5:5 2:5)"
+"  (2:5 4:5 8,5 8,0 4:0 1:0)"
+"  >8:0"
+"}";
+
+FILE *stropen(char *str, char *mode) {
+	return fmemopen(str, strlen(str), mode);
+}
+
 scanner *new_scanner(char *filename) {
 	scanner *res = 0;
 	FILE *inf;
-    const int USE_INTERNAL_DATA = 0;
+    char *USE_INTERNAL_DATA = 0;
 	/* NYI: here test whether filename == USE_INTERNAL_DATA
 	 * and then instead
 	 *     inf = fmemopen(buffer, strlen(buffer), "rt");
 	 */
-	inf = fopen(filename, "rt");
+	if(filename == USE_INTERNAL_DATA) {
+        inf =  stropen(internal_glyph_data, "rt");
+	}
+	else {
+        inf = fopen(filename, "rt");
+	}
 	if(inf != 0) {
 	    res = (scanner *)malloc(sizeof(scanner));
 	    res->inf = inf;
