@@ -413,7 +413,7 @@ static void initGlyphs(void) {
     parser *P = new_parser(65536);
     char *USE_INTERNAL_DATA = 0;
 
-    tryLoadGlyphs(P, USE_INTERNAL_DATA); /* tell scanner to use internal data! */
+    tryLoadGlyphs(P, USE_INTERNAL_DATA);
     tryLoadGlyphs(P, "~/.krakfot/glyphs.gly");
     tryLoadGlyphs(P, "glyphs.gly");
     /* print_glyphs(P); */
@@ -423,9 +423,6 @@ static void initGlyphs(void) {
     /*
     mklist(L, 'A', glyphA);
     mklist(L, 'B', glyphB);
-    */
-    for(ix = 'A'; ix <= 'B'; ix++)
-    	mkglyph(L, ix, P);
     mklist(L, 'C', glyphC);
     mklist(L, 'D', glyphD);
     mklist(L, 'E', glyphE);
@@ -451,6 +448,10 @@ static void initGlyphs(void) {
     mklist(L, 'Y', glyphY);
     mklist(L, 'Z', glyphZ);
     mklist(L, ' ', glyphSpace);
+    */
+    mkglyph(L, ' ', P);
+    for(ix = 'A'; ix <= 'Z'; ix++)
+    	mkglyph(L, ix, P);
 }
 
 static void init(void) {
