@@ -27,21 +27,7 @@
 
 int fullScreen = 0;
 
-/* https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths  */
-/* https://personal.math.ubc.ca/~cass/graphics/text/www/pdf/ch6.pdf */
-
-/*  here   svg path    PostScript  */
-/*---------------------------------*/
-/*  MV     M           moveto      */
-/*  LT     L           lineto      */
-/*  C1     (C,)        (curveto)   */
-/*  C2     (C,)        (curveto)   */
-/*  CT     C           curveto     */
-/*  STK    (implicit)  stroke      */
-/*  ADJ    (implicit)  translate   */
-/*---------------------------------*/
-
-static void drawGlyph2(glyph *G) {
+static void drawGlyph(glyph *G) {
 	int line, num_lines;
 	int pnt, num_pnts;
 	int ix;
@@ -108,7 +94,7 @@ static void drawGlyph2(glyph *G) {
 }
 
 void mkglyph(GLuint L, int ch, parser *P) {
-    glNewList(L+ch, GL_COMPILE); drawGlyph2(getelem(P, ch)); glEndList();
+    glNewList(L+ch, GL_COMPILE); drawGlyph(getelem(P, ch)); glEndList();
 }
 
 int tryLoadGlyphs(parser *P, char *path) {
