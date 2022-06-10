@@ -27,10 +27,6 @@ scanner *new_scanner(char *filename) {
 	scanner *res = 0;
 	FILE *inf;
     char *USE_INTERNAL_DATA = 0;
-	/* NYI: here test whether filename == USE_INTERNAL_DATA
-	 * and then instead
-	 *     inf = fmemopen(buffer, strlen(buffer), "rt");
-	 */
 	if(filename == USE_INTERNAL_DATA) {
         inf =  stropen(internal_glyph_data, "rt");
 	}
@@ -125,7 +121,7 @@ float scan_float(FILE *inf, int *OK) {
 	/* Integer part */
 	ch = fgetc(inf);
 	while(fraction == 0) {
-		if(ch == '.') fraction = 10;
+		if(ch == '.') fraction = 1;
 	    else if(is_digit(ch)) ipart = ipart*10 + to_num(ch);
         else {
         	ungetc(ch, inf);
@@ -137,7 +133,10 @@ float scan_float(FILE *inf, int *OK) {
 	/* Fractional part */
 	while(1) {
 		if(ch == '.') { *OK = 0; return 0; }
-	    else if(is_digit(ch)) fpart = fpart*10 + to_num(ch);
+	    else if(is_digit(ch)) {
+	    	fpart = fpart*10 + to_num(ch);
+	    	fraction *= 10;
+	    }
         else {
         	ungetc(ch, inf);
             return sgn*(ipart + (float)fpart/(float)fraction);
