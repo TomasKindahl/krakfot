@@ -4,8 +4,6 @@
   table, tr, td { border-collapse: collapse; padding: 0 4px; vertical-align: top; }
 </style>
 
-[Dir](dir.md) [Here](.)
-
 ## Potential usages
 
 * to write md/rst-texts

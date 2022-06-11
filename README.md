@@ -54,7 +54,7 @@ Problems with Unicode:
 
 ## Possible futures of Kråkfot
 
-[Future](doc/future.md)
+- [Future](doc/future.md)
 
 ## Notes
 
