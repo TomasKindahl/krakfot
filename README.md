@@ -1,9 +1,20 @@
-# krakfot
+# Kråkfot
 
 
 ## Purpose
 
-Kråkfot /crawkfoot/ [krɔːkfuːt] intends to be a general purpose viewer / GUI for simple interaction with text and graphics based on OpenGL.
+Kråkfot /crawkfoot/ [krɔːkfuːt] intends to be a general purpose viewer / GUI for
+simple interaction with text and graphics based on OpenGL. Explicit goals are to
+fulfill the functionality of:
+
+1. markdown editor
+2. file browser
+3. graphical viewer
+4. gloss exercise tool
+
+Kråkfot is based on a perfectly independent stroke font system, since Truetype
+and Opentype font system do everything to be hard to configure and new
+mathematical symbols is one of the purposes of this GUI viewer.
 
 ## Requirements
 
@@ -19,31 +30,10 @@ and
 
       apt get install freeglut3     # most certainly *not* automatic
 
-## Cubic Bézier
+## Technical documentation
 
-Per wikipedia
-
-**B**(t) = (1-t)<sup>3</sup>**P**<sub>0</sub> + 3(1-t)<sup>2</sup>t**P**<sub>1</sub> + 3(1-t)t<sup>2</sup>**P**<sub>2</sub> + t<sup>3</sup>**P**<sub>3</sub>, 0&le;t&le;1
-
-<pre style="font-size:80%; background: white; color: #00C; padding: 0.4em;">
-<b>typedef</b> <b>struct</b> _point_S {
-    <b class="green">float</b> x, y;
-} point;
-
-point bezier(point P[4], <b class="green">float</b> frac) {
-    point Q;
-    <b class="green">float</b> ifrac = 1-frac;
-    <b class="green">float</b> ifrac2 = ifrac*ifrac;
-    <b class="green">float</b> frac2 = frac*frac;
-    <b class="green">float</b> c0 = ifrac*ifrac2;
-    <b class="green">float</b> c1 = 3*ifrac2*frac;
-    <b class="green">float</b> c2 = 3*ifrac*frac2;
-    <b class="green">float</b> c3 = frac*frac2;
-    Q.x = c0*P[0].x + c1*P[1].x + c2*P[2].x + c3*P[3].x;
-    Q.y = c0*P[0].y + c1*P[1].y + c2*P[2].y + c3*P[3].y;
-    <b>return</b> Q;
-}
-</pre>
+- [Cubic Bézier](cubic-bezier.md)
+- [Parser](parser.md)
 
 ## Internal Encoding
 
@@ -63,17 +53,10 @@ Problems with Unicode:
 * Unicode pushes aside private characters to private fonts,
   which is incredibly inconvenient.
 
-## Future
+## Possible futures of Kråkfot
 
-- github: [TomasKindahl / krakfot](https://github.com/TomasKindahl/krakfot)
-- sourceforge: [freeglut](http://freeglut.sourceforge.net/docs/api.php#Display)
-- opengl.org: [GLUT-like Windowing, GUI, and Media Control toolkits](https://www.opengl.org/resources/libraries/windowtoolkits/)
-    - [cpw](http://mathies.com/cpw/download.html)
-- [glfw](https://www.glfw.org/docs/latest/index.html)
-    - [glfw download](https://www.glfw.org/download.html)
-    - github: [glfw](https://github.com/glfw/glfw)
-    - [glad](https://glad.dav1d.de/)
-        - github: [Dav1dde / glad](https://github.com/Dav1dde/glad)
-        - [glad](https://gen.glad.sh/)
-- [GLX](https://en.wikipedia.org/wiki/GLX)
+[Future](future.md)
 
+## Notes
+
+- [Notes](notes.md)

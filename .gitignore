@@ -3,8 +3,8 @@ krakfot
 test_bezier
 *.o
 *~
-notes.md
 dir.md
-statemachine.svg
 test/charscan
 test/test_bezier
+test/*~
+
