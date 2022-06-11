@@ -1,6 +1,5 @@
 # Kråkfot
 
-
 ## Purpose
 
 Kråkfot /crawkfoot/ [krɔːkfuːt] intends to be a general purpose viewer / GUI for
@@ -32,8 +31,8 @@ and
 
 ## Technical documentation
 
-- [Cubic Bézier](cubic-bezier.md)
-- [Parser](parser.md)
+- [Cubic Bézier](doc/cubic-bezier.md)
+- [Parser](doc/parser.md)
 
 ## Internal Encoding
 
@@ -55,8 +54,8 @@ Problems with Unicode:
 
 ## Possible futures of Kråkfot
 
-[Future](future.md)
+[Future](doc/future.md)
 
 ## Notes
 
-- [Notes](notes.md)
+- [Notes](doc/notes.md)
