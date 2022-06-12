@@ -111,10 +111,12 @@ parser *set_scanner(parser *P, scanner *scan);
 int parse_glyphs(parser *P);
 
 /** method print_glyphs                                     **/
-/**   args: P - pointer to a parser                         **/
+/**   args: P       - pointer to a parser                   **/
+/**         scale_x - rescale factor in dimension x         **/
+/**         scale_y - rescale factor in dimension y         **/
 /**   does: prints the glyph list pointed to by the parser  **/
 /**         object                                          **/
-int print_glyphs(parser *P);
+int print_glyphs(parser *P, float scale_x, float scale_y);
 
 /** method getelem                                          **/
 /**   args: P     - pointer to a parser                     **/

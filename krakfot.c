@@ -119,12 +119,14 @@ static void initGlyphs(void) {
     tryLoadGlyphs(P, USE_INTERNAL_DATA);
     tryLoadGlyphs(P, "~/.krakfot/glyphs.gly");
     tryLoadGlyphs(P, "glyphs.gly");
-    /* print_glyphs(P); */
+    print_glyphs(P,1,1);
 
     L = glGenLists(65536);
     glListBase(L);
     mkglyph(L, ' ', P);
     for(ix = 'A'; ix <= 'Z'; ix++)
+    	mkglyph(L, ix, P);
+    for(ix = 'a'; ix <= 'z'; ix++)
     	mkglyph(L, ix, P);
 }
 
@@ -140,6 +142,7 @@ static void init(void) {
 
 char *str1 = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 char *str2 = "THE QUICK BROWN FOX JUMPS OVER THE LAZY DOG";
+char *str3 = "abcdefghijklmnopqrstuvwxyz";
 
 static void printString(char *s) {
     GLsizei len = strlen(s);
@@ -151,6 +154,13 @@ void display(void) {
     glColor3f(1.0, 1.0, 1.0);
     {
         glPushMatrix();
+        glTranslatef(3.0, 180.0, 0.0);
+        glScalef(6.0, 6.0, 6.0);
+        printString(str3);
+        glPopMatrix();
+    }
+    {
+        glPushMatrix();
         glTranslatef(3.0, 100.0, 0.0);
         glScalef(6.0, 6.0, 6.0);
         printString(str1);
@@ -160,14 +170,14 @@ void display(void) {
         glPushMatrix();
         glTranslatef(3.0, 50.0, 0.0);
         glScalef(3.0, 3.0, 3.0);
-        printString(str2);
+        printString(str1);
         glPopMatrix();
     }
     {
         glPushMatrix();
         glTranslatef(3.0, 13.0, 0.0);
         glScalef(2.0, 2.0, 2.0);
-        printString(str2);
+        printString(str1);
         glPopMatrix();
     }
     glutSwapBuffers();
