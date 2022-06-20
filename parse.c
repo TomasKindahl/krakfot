@@ -29,14 +29,14 @@ int point_flexarr_add_point(point_flexarr *PTFA, int is_comma, float x, float y)
 	return 1;
 }
 
-void point_flexarr_print(point_flexarr *PTFA, float scale_x, float scale_y) {
+void point_flexarr_print(point_flexarr *PTFA, float scale_x, float off_x, float scale_y, float off_y) {
 	int ix;
 	char c;
 	printf("(");
 	for(ix = 0; ix < PTFA->ins; ix++) {
 		if(ix) printf(" ");
 		c = (PTFA->parr[ix].bez_ctrl == 0)?':':',';
-		printf("%G%c%G", PTFA->parr[ix].x*scale_x, c, PTFA->parr[ix].y*scale_y);
+		printf("%G%c%G", PTFA->parr[ix].x*scale_x + off_x, c, PTFA->parr[ix].y*scale_y + off_y);
 	}
 	printf(")");
 }
@@ -68,11 +68,11 @@ int path_flexarr_add_point(path_flexarr *PFA, int is_comma, float x, float y) {
 	return 1;
 }
 
-void path_flexarr_print(path_flexarr *PFA, float scale_x, float scale_y) {
+void path_flexarr_print(path_flexarr *PFA, float scale_x, float off_x, float scale_y, float off_y) {
 	int ix;
 	for(ix = 0; ix < PFA->ins; ix++) {
 		printf("  ");
-		point_flexarr_print(PFA->path[ix], scale_x, scale_y);
+		point_flexarr_print(PFA->path[ix], scale_x, off_x, scale_y, off_y);
 		printf("\n");
 	}
 }
@@ -135,18 +135,18 @@ parser *set_scanner(parser *P, scanner *scan) {
 	return P;
 }
 
-int print_glyphs_help(glyph *G, float scale_x, float scale_y) {
+int print_glyphs_help(glyph *G, float scale_x, float off_x, float scale_y, float off_y) {
 	if(!G) return 1;
 	printf("@%X = {\n", G->char_code);
-	path_flexarr_print(G->contents, scale_x, scale_y);
+	path_flexarr_print(G->contents, scale_x, off_x, scale_y, off_y);
 	printf("  >%g:%g\n", G->adjust.x*scale_x, G->adjust.y*scale_y);
 	printf("}\n");
 }
 
-int print_glyphs(parser *P, float scale_x, float scale_y) {
+int print_glyphs(parser *P, float scale_x, float off_x, float scale_y, float off_y) {
 	int ix;
 	for(ix = 0; ix < P->num_cglyphs; ix++) 
-	    print_glyphs_help(P->cglyph[ix], scale_x, scale_y);
+	    print_glyphs_help(P->cglyph[ix], scale_x, off_x, scale_y, off_y);
 	return 1;
 }
 
