@@ -137,18 +137,14 @@ static void init(void) {
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
     glHint(GL_LINE_SMOOTH_HINT, GL_DONT_CARE);
     glLineWidth(2.0);
-    
     initGlyphs();
-
 }
 
 char32_t *str0 = U"H0123456789H";
-char32_t *str1 = U"A0B1C2DEFGHIJKLMNOPQRSTUVWXYZ";
+char32_t *str1 = U"A0B1C2D3E4F5G6H7I8J9KLMNOPQRSTUVWXYZ";
 char32_t *str2 = U"AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz";
 char32_t *str3 = U"abcdefghijklmnopqrstuvwxyz";
 char32_t *str4 = U"abcABCåäö1a11b23";
-
-
 
 int strlen32(const char32_t* strarg) {
     if(!strarg)
@@ -216,7 +212,8 @@ void keyboard(unsigned char key, int x, int y) {
         fullScreen = 1 - fullScreen;
         break;
       case CTRL_R:
-        /* some reload here! */
+        initGlyphs();
+        glutPostRedisplay();
         break;
       case CTRL_Q:
         exit(0);
