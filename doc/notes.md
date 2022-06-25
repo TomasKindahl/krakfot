@@ -42,22 +42,23 @@
 
 **Text:**
 
-
 **Vague ideas about an improved markdown:**
 
 - [improved MD](improved-MD.md)
 
 ### Priority 1
 
-- load text files and show texts at positions
+- load text files
 - text reload
 - text auto-reload
-- glyph reload
 - write from upper left corner instead of lower left
+- numbers
 
 ### DONE
 
 - small letters
+- glyph reload
+- show texts at positions
 
 ### Abandoned
 
