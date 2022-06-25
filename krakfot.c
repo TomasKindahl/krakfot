@@ -18,6 +18,9 @@
 #include <GL/freeglut.h>
 #include <stdlib.h>
 #include <string.h>
+#include <uchar.h>
+#include <unicode/ustring.h>
+#include <locale.h>
 
 #include <stdio.h>
 
@@ -139,46 +142,48 @@ static void init(void) {
 
 }
 
-char *str1 = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-char *str2 = "AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz";
-char *str3 = "abcdefghijklmnopqrstuvwxyz";
+char32_t *str0 = U"H0123456789H";
+char32_t *str1 = U"A0B1C2DEFGHIJKLMNOPQRSTUVWXYZ";
+char32_t *str2 = U"AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz";
+char32_t *str3 = U"abcdefghijklmnopqrstuvwxyz";
+char32_t *str4 = U"abcABCåäö1a11b23";
 
-static void printString(char *s) {
-    GLsizei len = strlen(s);
-    glCallLists(len, GL_BYTE, (GLbyte *)s);
+
+
+int strlen32(const char32_t* strarg) {
+    if(!strarg)
+        return -1; //strarg is NULL pointer
+    const char32_t* str = strarg;
+    for(;*str;++str)
+        ; // empty body
+    return str-strarg;
+}
+
+static void printString(char32_t *s) {
+    GLsizei len = strlen32(s);
+    glCallLists(len, GL_INT, (GLint *)s);
+}
+
+static void printStringAt(float x, float y, float size, char32_t *s) {
+	glPushMatrix();
+	glTranslatef(x, y, 0.0);
+	glScalef(size, size, size);
+	printString(s);
+	glPopMatrix();
 }
 
 void display(void) {
     glClear(GL_COLOR_BUFFER_BIT);
+    glColor3f(1.0, 0.5, 0.5);
+    printStringAt(3.0, 250.0, 3.0, str0);
+    glColor3f(1.0, 1.0, 0.0);
+    printStringAt(3.0, 180.0, 6.0, str3);
+    glColor3f(1.0, 0.0, 1.0);
+    printStringAt(3.0, 100.0, 6.0, str1);
+    glColor3f(0.5, 0.5, 1.0);
+    printStringAt(3.0, 50.0, 3.0, str2);
     glColor3f(1.0, 1.0, 1.0);
-    {
-        glPushMatrix();
-        glTranslatef(3.0, 180.0, 0.0);
-        glScalef(6.0, 6.0, 6.0);
-        printString(str3);
-        glPopMatrix();
-    }
-    {
-        glPushMatrix();
-        glTranslatef(3.0, 100.0, 0.0);
-        glScalef(6.0, 6.0, 6.0);
-        printString(str1);
-        glPopMatrix();
-    }
-    {
-        glPushMatrix();
-        glTranslatef(3.0, 50.0, 0.0);
-        glScalef(3.0, 3.0, 3.0);
-        printString(str2);
-        glPopMatrix();
-    }
-    {
-        glPushMatrix();
-        glTranslatef(3.0, 13.0, 0.0);
-        glScalef(2.0, 2.0, 2.0);
-        printString(str1);
-        glPopMatrix();
-    }
+    printStringAt(3.0, 13.0, 2.0, str4);
     glutSwapBuffers();
 }
 
