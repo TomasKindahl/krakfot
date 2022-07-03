@@ -2,6 +2,7 @@
 
 <style>
   table, tr, td { border-collapse: collapse; padding: 0 4px; vertical-align: top; }
+  span.wb { background: white; font-weight: bold; }
 </style>
 
 ## Potential usages
@@ -10,49 +11,58 @@
 * to start programs by clicking on links (file manager functionality)
 * to use for gloss exercise
 * run slideshows
+* directory stuff?
 
-## Parser stuff
+## Links
 
-- [parser](parser.md)
-
-## Characters' stuff
-
-- [C11 string literals](../../../C/ustringlit/dir.md)
+- [parser](parser.md) Parser stuff
+- [C11 string literals](../../../C/ustringlit/dir.md) Characters' stuff
 
 ## Development plan
 
 ### Unprioritized (backlog)
 
-**Network:**
+<span class="wb">Network:</span>
 
 - option to communicating with a program through a network (?)
 - GUI/program tiers communication by [pipes](pipes.md)
 - data download (later: encrypted d:o)
 - data upload
 
-**Authentication:**
+<span class="wb">Authentication:</span>
 
 - user authentication
 
-**Fonts and glyphs:**
+<span class="wb">Fonts and glyphs:</span>
 
 - using alternate glyphs
 - font editor
-- glyph structure compaction (not 100 lines of paths with 100 nodes)
 
-**Text:**
+<span class="wb">Text:</span>
 
-**Vague ideas about an improved markdown:**
+<span class="wb">Vague ideas about an improved markdown:</span>
 
 - [improved MD](improved-MD.md)
 
 ### Priority 1
 
+<span class="wb">Glyphs:</span>
+
+- numbers
+
+<span class="wb">Load/reload:</span>
+
 - load text files
 - text reload
 - text auto-reload
+
+<span class="wb">Layout:</span>
+
 - write from upper left corner instead of lower left
-- numbers
+
+<span class="wb">Internal data:</span>
+
+- glyph structure compaction (not 100 lines of paths with 100 nodes)
 
 ### DONE
 
