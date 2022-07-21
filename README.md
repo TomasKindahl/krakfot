@@ -2,18 +2,30 @@
 
 ## Purpose
 
-Kråkfot /crawkfoot/ [krɔːkfuːt] intends to be a general purpose viewer / GUI for
-simple interaction with text and graphics based on OpenGL. Explicit goals are to
-fulfill the functionality of:
+Kråkfot /crawkfoot/ [krɔːkfuːt] intends to be a general purpose viewer / GUI for simple interaction with text and graphics based on OpenGL. The GUI shall be an independent graphical tier for which applications easily could be constructed.
 
-1. markdown editor
-2. file browser
+The graphics system:
+
+* is to be running independently of any application,
+* communicating with user applications:
+     * with a UTF-8 textual protocol based on readable glyphs,
+     * via UART/USART, bluetooth, networking,
+     * using variously pipes, and network sockets;
+* maintaining objects, either separately from the application,
+  or mirrored in an orb based object communication,
+
+Kråkfot is based on a perfectly independent stroke font system, since Truetype and Opentype font system do everything to be hard to configure and new mathematical symbols is one of the purposes of this GUI viewer.
+
+### Former purposes
+
+Demoted to applications that shall easily be implemented:
+
+1. markdown/rst editor
+2. file browser, to start programs by clicking on links
+   (file manager functionality)
 3. graphical viewer
-4. gloss exercise tool
-
-Kråkfot is based on a perfectly independent stroke font system, since Truetype
-and Opentype font system do everything to be hard to configure and new
-mathematical symbols is one of the purposes of this GUI viewer.
+4. gloss exercise tool, to use for gloss exercise
+5. run slideshows
 
 ## Requirements
 

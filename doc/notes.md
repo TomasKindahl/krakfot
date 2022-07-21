@@ -5,15 +5,7 @@
   span.wb { background: white; font-weight: bold; }
 </style>
 
-## Potential usages
-
-* to write md/rst-texts
-* to start programs by clicking on links (file manager functionality)
-* to use for gloss exercise
-* run slideshows
-* directory stuff?
-
-## Links
+## Parser stuff
 
 - [parser](parser.md) Parser stuff
 - [C11 string literals](../../../C/ustringlit/dir.md) Characters' stuff

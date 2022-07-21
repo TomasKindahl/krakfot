@@ -131,7 +131,11 @@ static void initGlyphs(void) {
     	mkglyph(L, ix, P);
 }
 
-static void init(void) {
+static void init(int argc, char** argv) {
+	int ix;
+	for(ix = 0; ix < argc; ix++) {
+		printf("%i: %s\n", ix, argv[ix]);
+	}
     glEnable(GL_LINE_SMOOTH);
     glEnable(GL_BLEND);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
@@ -139,12 +143,6 @@ static void init(void) {
     glLineWidth(2.0);
     initGlyphs();
 }
-
-char32_t *str0 = U"H0123456789H";
-char32_t *str1 = U"A0B1C2D3E4F5G6H7I8J9KLMNOPQRSTUVWXYZ";
-char32_t *str2 = U"AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz";
-char32_t *str3 = U"abcdefghijklmnopqrstuvwxyz";
-char32_t *str4 = U"abcABCåäö1a11b23";
 
 int strlen32(const char32_t* strarg) {
     if(!strarg)
@@ -168,17 +166,19 @@ static void printStringAt(float x, float y, float size, char32_t *s) {
 	glPopMatrix();
 }
 
+char32_t *str0 = U"H0123456789H";
+char32_t *str1 = U"A0B1C2D3E4F5G6H7I8J9KLMNOPQRSTUVWXYZ";
+char32_t *str2 = U"AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz";
+char32_t *str3 = U"abcdefghijklmnopqrstuvwxyz";
+char32_t *str4 = U"abcABCåäö1a11b23";
+
 void display(void) {
     glClear(GL_COLOR_BUFFER_BIT);
-    glColor3f(1.0, 0.5, 0.5);
-    printStringAt(3.0, 250.0, 3.0, str0);
-    glColor3f(1.0, 1.0, 0.0);
-    printStringAt(3.0, 180.0, 6.0, str3);
-    glColor3f(1.0, 0.0, 1.0);
-    printStringAt(3.0, 100.0, 6.0, str1);
-    glColor3f(0.5, 0.5, 1.0);
-    printStringAt(3.0, 50.0, 3.0, str2);
     glColor3f(1.0, 1.0, 1.0);
+    printStringAt(3.0, 250.0, 3.0, str0);
+    printStringAt(3.0, 180.0, 6.0, str3);
+    printStringAt(3.0, 100.0, 6.0, str1);
+    printStringAt(3.0, 50.0, 3.0, str2);
     printStringAt(3.0, 13.0, 2.0, str4);
     glutSwapBuffers();
 }
@@ -234,7 +234,7 @@ int main(int argc, char** argv) {
 
     glutInitWindowSize(1000, 1000);
     glutCreateWindow("krakfot");
-    init();
+    init(argc, argv);
     glutReshapeFunc(reshape);
     glutKeyboardFunc(keyboard);
     /* glutSpecialFunc(specialKey); */
