@@ -1,5 +1,16 @@
 # Kråkfot
 
+<svg width="135" height="27">
+   <rect height="27" width="132" style="fill:#FFEEDD;"/>
+   <text style="fill: red;stroke:red;stroke-width:0.5px" x="60" y="18">Kråkfot</text>
+   <path style="fill: none;stroke:red;stroke-width:2px" d="M32 14 L43 7"/>
+   <path style="fill: none;stroke:red;stroke-width:2px" d="M32 0 L43 7"/>
+   <path style="fill: none;stroke:red;stroke-width:2px" d="M32 7 L55 7"/>
+   <path style="fill: none;stroke:red;stroke-width:2px" d="M12 26 L23 19"/>
+   <path style="fill: none;stroke:red;stroke-width:2px" d="M12 12 L23 19"/>
+   <path style="fill: none;stroke:red;stroke-width:2px" d="M12 19 L35 19"/>
+</svg>
+
 ## Purpose
 
 Kråkfot /crawkfoot/ [krɔːkfuːt] intends to be a general purpose viewer / GUI for simple interaction with text and graphics based on OpenGL. The GUI shall be an independent graphical tier for which applications easily could be constructed.
@@ -63,6 +74,8 @@ Problems with Unicode:
   by locale and other stuff that pushes the semantics aside.
 * Unicode pushes aside private characters to private fonts,
   which is incredibly inconvenient.
+
+- [NonUnicode.md](doc/nonunicode.md)
 
 ## Possible futures of Kråkfot
 
