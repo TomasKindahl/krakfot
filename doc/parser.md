@@ -1,4 +1,4 @@
-# Parser stuff
+# Glyph parser stuff
 
 <style>
   pre { font-size: 90%; }

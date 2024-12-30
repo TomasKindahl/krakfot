@@ -1,9 +1,13 @@
 # Notes for development ideas
 
+[Dir](dir.md) [Here](.)
+
 <style>
   table, tr, td { border-collapse: collapse; padding: 0 4px; vertical-align: top; }
   span.wb { background: white; font-weight: bold; }
 </style>
+
+[TOC]
 
 ## Parser stuff
 
@@ -14,25 +18,37 @@
 
 ### Unprioritized (backlog)
 
-<span class="wb">Network:</span>
+#### Config
 
-- option to communicating with a program through a network (?)
-- GUI/program tiers communication by [pipes](pipes.md)
-- data download (later: encrypted d:o)
-- data upload
+Open krakfot with a text config file: multiple windows, multiple terminals started. See [open thunar with multiple tabs in command line / Desktop / Xfce Forums](https://forum.xfce.org/viewtopic.php?id=12154) for bad example!
 
-<span class="wb">Authentication:</span>
+#### Network
+
+|local                  |[Unix][Unix]      |description                                             |
+|-----------------------|------------------|--------------------------------------------------------|
+|                       |                  |option to communicating with a program through a network|
+|<s>[pipes](pipes.md)</s>      |                  |GUI/program tiers communication by                      |
+|pty                    |[eduterm][eduterm]|Also see [VT220][VT220]                                                       |
+|[protocol](protocol.md)|                  |communication protocol                                  |
+|                       |                  |data download (later: encrypted data download)          |
+|                       |                  |data upload                                             |
+
+[Unix]: ../../../Unix/dir.md
+[eduterm]: ../../../Unix/eduterm/dir.md
+[VT220]: /home/rursus/Documents/Länkar/Data/vt220.md
+
+#### Authentication
 
 - user authentication
 
-<span class="wb">Fonts and glyphs:</span>
+#### Fonts and glyphs
 
 - using alternate glyphs
 - font editor
 
-<span class="wb">Text:</span>
+#### Text
 
-<span class="wb">Vague ideas about an improved markdown:</span>
+#### Vague ideas about an improved markdown:
 
 - [improved MD](improved-MD.md)
 

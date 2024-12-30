@@ -2,7 +2,7 @@
 
 ## Program architecture
 
-Protocol based embedding, the protocol:
+[Protocol](protocol.md) based embedding, the protocol:
 
 - the protocol should be fixed, and it should provide grammar
   rules as well as rules for buffer limitations,

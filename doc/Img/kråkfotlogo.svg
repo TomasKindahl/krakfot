@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="92.805786mm"
+   height="35.882221mm"
+   viewBox="0 0 92.805786 35.882221"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.1.2 (0a00cf5339, 2022-02-04)"
+   sodipodi:docname="kråkfotlogo.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:zoom="1.8494691"
+     inkscape:cx="185.99932"
+     inkscape:cy="98.947312"
+     inkscape:current-layer="layer1"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0" />
+  <defs
+     id="defs2">
+    <filter
+       inkscape:collect="always"
+       style="color-interpolation-filters:sRGB"
+       id="filter14619"
+       x="-0.097511385"
+       y="-0.36518632"
+       width="1.1950228"
+       height="1.7303726">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="3.1553166"
+         id="feGaussianBlur14621" />
+    </filter>
+  </defs>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-0.89510206,4.25646)">
+    <rect
+       style="opacity:0.658169;fill:#ffffff;stroke:none;stroke-width:0.499999;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;filter:url(#filter14619)"
+       id="rect14573"
+       width="77.660263"
+       height="20.736702"
+       x="8.4678621"
+       y="3.3163002"
+       ry="5.1992593" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:10.5833px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#ffaaaa;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       x="14.336576"
+       y="20.344355"
+       id="text9490"><tspan
+         sodipodi:role="line"
+         id="tspan9488"
+         style="font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:15.875px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Bold Italic';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#ffaaaa;stroke-width:0.264583"
+         x="14.336576"
+         y="20.344355">Kråkfot</tspan></text>
+    <path
+       style="fill:#ff0000;stroke:#000000;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 8.7514082,9.6563433 6.9163798,3.1572677 3.341518,4.285945 1.148139,-0.378999 -1.393625,-3.049387 0.732408,-0.389531 4.750595,2.26909 0.877738,-0.887493 -4.930738,-3.016705 0.05559,-0.535942 L 22.559117,9.43086 24.142784,8.79714 23.927194,8.3277437 21.27217,8.2215139 16.778944,10.172715 9.59205,8.8433946 Z"
+       id="path1326" />
+    <path
+       style="fill:#ff0000;stroke:#000000;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 38.451871,21.023056 7.094375,1.481294 3.409641,1.351594 3.242326,2.652436 0.811708,0.446378 0.533672,-0.588589 -2.587293,-2.877606 0.20658,-0.538534 5.955005,-0.780719 1.267574,-0.974048 1.450935,-0.429402 -0.219123,-0.721504 -1.565714,-0.189636 -4.312335,0.766844 -2.74107,0.250406 2.660627,-1.219516 1.160571,-0.960954 1.668789,-1.357659 -3.715603,0.746329 -2.711984,0.984491 -1.812486,0.996377 -2.322246,-0.01417 -3.379419,0.110148 z"
+       id="path1361" />
+    <path
+       style="fill:#ff0000;stroke:#000000;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 69.205401,9.1228912 7.411248,-1.6572519 3.691267,-1.4377297 3.786521,-2.7376969 0.903945,-0.4671908 0.415979,0.5770681 -3.175409,2.9475109 0.09822,0.5348357 3.68533,-0.017163 2.008544,0.635283 1.934996,0.8136407 L 89.600514,9.0427937 87.425307,8.852495 84.449076,9.1540304 81.751908,8.9695944 83.140135,10.03537 84.756507,11.262695 85.75331,12.97012 82.96622,11.725141 80.446623,10.804109 78.83113,9.8493157 76.500327,9.9199233 73.13489,9.891595 Z"
+       id="path1361-6"
+       sodipodi:nodetypes="cccccccccccccccccccccccc" />
+  </g>
+</svg>
