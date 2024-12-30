@@ -19,6 +19,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <uchar.h>
+#include <unistd.h>
 #include <unicode/ustring.h>
 #include <locale.h>
 
@@ -27,6 +28,7 @@
 #include "bezier.h"
 #include "scan.h"
 #include "parse.h"
+#include "threads.h"
 
 int fullScreen = 0;
 
@@ -142,6 +144,7 @@ static void init(int argc, char** argv) {
     glHint(GL_LINE_SMOOTH_HINT, GL_DONT_CARE);
     glLineWidth(2.0);
     initGlyphs();
+    initThreads();
 }
 
 int strlen32(const char32_t* strarg) {
@@ -179,7 +182,7 @@ void display(void) {
     printStringAt(3.0, 180.0, 6.0, str3);
     printStringAt(3.0, 100.0, 6.0, str1);
     printStringAt(3.0, 50.0, 3.0, str2);
-    printStringAt(3.0, 13.0, 2.0, str4);
+    printStringAt(3.0, 13.0, 3.0, str4);
     glutSwapBuffers();
 }
 
@@ -222,6 +225,13 @@ void keyboard(unsigned char key, int x, int y) {
     }
 }
 
+int idle_num = 0;
+
+void idle() {
+	/* printf("idle %i\n", idle_num++); */
+	usleep(14000);
+}
+
 /*  Main Loop
  *  Open window with initial window size, title bar,
  *  RGBA display mode, and handle input events.
@@ -231,10 +241,10 @@ int main(int argc, char** argv) {
     glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA);
     
     /* Multiple windows? https://stackoverflow.com/questions/10465462/multiple-windows-opengl-glut */
-
     glutInitWindowSize(1000, 1000);
     glutCreateWindow("krakfot");
     init(argc, argv);
+    glutIdleFunc(idle);
     glutReshapeFunc(reshape);
     glutKeyboardFunc(keyboard);
     /* glutSpecialFunc(specialKey); */

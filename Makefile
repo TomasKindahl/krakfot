@@ -17,11 +17,11 @@
 ################################################################################
 
 LIBS	= -lGL -lGLU -lglut
-INC		= bezier.o parse.o scan.o
+INC		= bezier.o parse.o scan.o threads.o
 GCC     = gcc -g
 
 krakfot: krakfot.c $(INC)
-	$(GCC) -o $@ $< $(LIBS) $(INC)
+	$(GCC) -o $@ $< $(LIBS) $(INC) -pthread
 
 bezier.o: bezier.c bezier.h
 	$(GCC) -c $<
@@ -31,6 +31,9 @@ scan.o: scan.c scan.h
 
 parse.o: parse.c parse.h
 	$(GCC) -c $<
+
+threads.o: threads.c threads.h
+	$(GCC) -c $< -pthread
 
 test/charscan:
 	cd test ; $(MAKE) charscan
